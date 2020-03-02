@@ -2,6 +2,7 @@
 ## QiYu
 ### 简介
 七鱼客服更新最新的ios，该版本不支持RN6.0+的自动导入请在react-native-config中手动配置
+```
 module.exports = {
   dependencies: {
     'react-native-qiyu': {
@@ -12,6 +13,7 @@ module.exports = {
     },
   },
 };
+```
 
 ### 安装与配置
 #### 安装
