@@ -1,0 +1,24 @@
+{
+  "name": "react-native-qiyu",
+  "version": "1.0.0",
+  "description": "react-native netease qiyu sdk",
+  "main": "index.js",
+  "keywords": [
+    "netease",
+    "qiyu",
+    "sdk"
+  ],
+  "author": "Netease qiyu",
+  "license": "ISC",
+  "homepage": "http://qiyukf.com/",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ilovetochangetheworld/react-native-qiyu.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ilovetochangetheworld/react-native-qiyu/issues"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
