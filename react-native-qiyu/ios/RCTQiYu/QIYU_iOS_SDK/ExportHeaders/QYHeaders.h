@@ -9,18 +9,15 @@
 #ifndef QYSDK_YSFHeaders_h
 #define QYSDK_YSFHeaders_h
 
-#import "QYSessionViewController.h"
-#import "QYCustomUIConfig.h"
-#import "QYCustomActionConfig.h"
-#import "QYConversationManager.h"
 #import "QYSource.h"
 #import "QYUserInfo.h"
-#import "QYStaffInfo.h"
-#import "QYMessageInfo.h"
-#import "QYSessionInfo.h"
+#import "QYSessionViewController.h"
+#import "QYConversationManager.h"
+#import "QYCustomUIConfig.h"
+#import "QYCustomActionConfig.h"
 #import "QYCommodityInfo.h"
 #import "QYPushMessage.h"
-#import "QYAction.h"
-#import "QYEvaluation.h"
+#import "QYMessageInfo.h"
+#import "QYSessionInfo.h"
 
 #endif

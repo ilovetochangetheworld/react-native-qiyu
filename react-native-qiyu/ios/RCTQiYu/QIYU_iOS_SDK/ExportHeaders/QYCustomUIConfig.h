@@ -7,294 +7,19 @@
 //
 
 /**
- *  工具栏自定义配置项：QYCustomInputItem
+ *  自定义UI配置类；如果想要替换图片素材，可以自己创建一个QYCustomResource.bundle，在其中放置跟QYResource.bundle中同名的图片素材，即可实现替换。
+ *  SDK会优先使用QYCustomResource.bundle中的图片素材，当QYCustomResource.bundle中没有的时候，才会使用QYResource.bundle中的图片素材
  */
-
-/**
- *  输入框下方“更多”配置项点击回调
- */
-typedef void (^QYCustomInputItemBlock)();
-
-/**
- *  输入框下方“更多”配置项
- *  注：为达到最佳效果，配置项图片最佳尺寸为64ptx64pt
- */
-@interface QYCustomInputItem : NSObject
-
-@property (nonatomic, strong) UIImage *normalImage;
-@property (nonatomic, strong) UIImage *selectedImage;
-@property (nonatomic, copy) NSString *text;
-@property (nonatomic, copy) QYCustomInputItemBlock block;
-
-@end
-
-
-/**
- *  自定义UI配置类：QYCustomUIConfig，单例模式
- *  如果想要替换图片素材，可以自己创建一个QYCustomResource.bundle，在其中放置与QYResource.bundle同名的图片素材，即可实现替换。
- *  SDK会优先使用QYCustomResource.bundle中的图片素材，若QYCustomResource.bundle中没有，才会使用QYResource.bundle中的图片素材。
- */
-
-/**
- *  访客分流展示模式
- */
-typedef NS_ENUM(NSInteger, QYBypassDisplayMode) {
-    QYBypassDisplayModeNone,
-    QYBypassDisplayModeCenter,
-    QYBypassDisplayModeBottom
-};
-
-/**
- *  消息下拉加载状态
- */
-typedef NS_ENUM(NSInteger, QYMessagesLoadState) {
-    QYMessagesLoadStateIdle,
-    QYMessagesLoadStateWillLoad,
-    QYMessagesLoadStateLoading,
-};
-
-
 @interface QYCustomUIConfig : NSObject
 
 + (instancetype)sharedInstance;
 
-
 /**
- *  恢复默认设置
+ *  恢复成默认设置
+ *
+ *  @return void
  */
 - (void)restoreToDefault;
-
-
-//聊天背景设置
-
-/**
- *  消息tableview的背景图片
- */
-@property (nonatomic, strong) UIImageView *sessionBackground;
-
-
-//导航栏相关设置（人工/评价按钮可后台关闭显示）
-
-/**
- *  导航栏右侧按钮风格，默认灰色风格，NO为白色风格
- */
-@property (nonatomic, assign) BOOL rightItemStyleGrayOrWhite;
-
-/**
- *  导航栏右侧退出会话按钮是否显示，默认为NO
- */
-@property (nonatomic, assign) BOOL showCloseSessionEntry;
-
-/**
- *  是否显示消息流头像
- */
-@property (nonatomic, assign) BOOL showHeadImage;
-
-/**
- *  是否显示导航栏客服头像
- */
-@property (nonatomic, assign) BOOL showTopHeadImage;
-
-
-//访客相关设置
-
-/**
- *  访客头像
- */
-@property (nonatomic, strong) UIImage *customerHeadImage;
-@property (nonatomic, copy) NSString *customerHeadImageUrl;
-
-/**
- *  访客消息气泡normal图片
- */
-@property (nonatomic, strong) UIImage *customerMessageBubbleNormalImage;
-
-/**
- *  访客消息气泡pressed图片
- */
-@property (nonatomic, strong) UIImage *customerMessageBubblePressedImage;
-
-/**
- *  访客文本消息字体颜色
- */
-@property (nonatomic, strong) UIColor *customMessageTextColor;
-
-/**
- *  访客文本消息中的链接字体颜色
- */
-@property (nonatomic, strong) UIColor *customMessageHyperLinkColor;
-
-/**
- *  访客文本消息字体大小
- */
-@property (nonatomic, assign) CGFloat customMessageTextFontSize;
-
-
-//客服相关设置
-
-/**
- *  客服头像
- */
-@property (nonatomic, strong) UIImage *serviceHeadImage;
-@property (nonatomic, copy) NSString *serviceHeadImageUrl;
-
-/**
- *  客服消息气泡normal图片
- */
-@property (nonatomic, strong) UIImage *serviceMessageBubbleNormalImage;
-
-/**
- *  客服消息气泡pressed图片
- */
-@property (nonatomic, strong) UIImage *serviceMessageBubblePressedImage;
-
-/**
- *  客服文本消息字体颜色
- */
-@property (nonatomic, strong) UIColor *serviceMessageTextColor;
-
-/**
- *  客服文本消息中的链接字体颜色
- */
-@property (nonatomic, strong) UIColor *serviceMessageHyperLinkColor;
-
-/**
- *  客服文本消息字体大小
- */
-@property (nonatomic, assign) CGFloat serviceMessageTextFontSize;
-
-
-//提示消息相关设置（例：***为你服务）
-
-/**
- *  提示文本消息字体颜色；提示文本消息有很多种，比如“***为你服务”就是一种
- */
-@property (nonatomic, strong) UIColor *tipMessageTextColor;
-
-/**
- *  提示文本消息字体大小；提示文本消息有很多种，比如“***为你服务”就是一种
- */
-@property (nonatomic, assign) CGFloat tipMessageTextFontSize;
-
-
-//消息相关设置
-
-/**
- *  访客分流展示模式
- */
-@property (nonatomic, assign) QYBypassDisplayMode bypassDisplayMode;
-
-/**
- *  消息竖直方向间距
- */
-@property (nonatomic, assign) CGFloat sessionMessageSpacing;
-
-/**
- *  头像与消息气泡间距，默认为4pt
- */
-@property (nonatomic, assign) CGFloat headMessageSpacing;
-
-/**
- *  消息内强提示按钮文字颜色，例如"立即评价"按钮，默认白色
- */
-@property (nonatomic, strong) UIColor *messageButtonTextColor;
-
-/**
- *  消息内强提示按钮底色，例如"立即评价"按钮，默认蓝色
- */
-@property (nonatomic, strong) UIColor *messageButtonBackColor;
-
-
-//输入栏上方操作按钮设置
-
-/**
- *  输入框上方操作按钮文字颜色
- */
-@property (nonatomic, strong) UIColor *actionButtonTextColor;
-
-/**
- *  输入框上方操作按钮边框颜色
- */
-@property (nonatomic, strong) UIColor *actionButtonBorderColor;
-
-
-//输入栏设置
-
-/**
- *  输入框字体颜色
- */
-@property (nonatomic, strong) UIColor *inputTextColor;
-
-/**
- *  输入框字体大小
- */
-@property (nonatomic, assign) CGFloat inputTextFontSize;
-
-/**
- *  输入框占位文案
- */
-@property (nonatomic, copy) NSString *inputTextPlaceholder;
-
-/**
- *  输入栏语音按钮，人工模式下是否显示，默认为YES
- */
-@property (nonatomic, assign) BOOL showAudioEntry;
-
-/**
- *  输入栏语音按钮，机器人模式下是否显示，默认为YES
- */
-@property (nonatomic, assign) BOOL showAudioEntryInRobotMode;
-
-/**
- *  输入栏表情按钮是否显示，默认为YES
- */
-@property (nonatomic, assign) BOOL showEmoticonEntry;
-
-/**
- *  输入栏相机按钮是否显示，默认为YES
- */
-@property (nonatomic, assign) BOOL showImageEntry;
-
-/**
- * 照片/视频选择页面主题颜色，默认为蓝色
- */
-@property (nonatomic, strong) UIColor *imagePickerColor;
-
-/**
- *  进入聊天界面是否自动弹出键盘，默认为YES
- */
-@property (nonatomic, assign) BOOL autoShowKeyboard;
-
-/**
- *  表示聊天组件离界面底部的间距，默认是0；比较典型的是底部有tabbar，这时候设置为tabbar的高度即可
- */
-@property (nonatomic, assign) CGFloat bottomMargin;
-
-
-//平台电商相关设置
-
-/**
- *  导航栏右侧商铺入口按钮是否显示，默认为NO
- */
-@property (nonatomic, assign) BOOL showShopEntrance;
-
-/**
- *  聊天内容区域的按钮（对于平台电商来说，这里可以考虑放置“会话列表入口“）显示，默认不显示
- */
-@property (nonatomic, assign) BOOL showSessionListEntrance;
-
-/**
- *  会话列表入口icon
- */
-@property (nonatomic, strong) UIImage *sessionListEntranceImage;
-
-/**
- *  聊天内容区域的按钮（对于平台电商来说，这里可以考虑放置“会话列表入口“）在聊天页面的位置，YES代表在右上角，NO代表在左上角，默认在右上角
- */
-@property (nonatomic, assign) BOOL sessionListEntrancePosition;
-
-
-//会话窗口上方提示条相关设置
 
 /**
  *  会话窗口上方提示条中的文本字体颜色
@@ -311,38 +36,154 @@ typedef NS_ENUM(NSInteger, QYMessagesLoadState) {
  */
 @property (nonatomic, strong) UIColor *sessionTipBackgroundColor;
 
+/**
+ *  访客文本消息字体颜色
+ */
+@property (nonatomic, strong) UIColor *customMessageTextColor;
 
 /**
- *  输入框下方“完全自定义”配置项
+ *  访客文本消息中的链接字体颜色
  */
-@property (nonatomic, strong) NSArray<QYCustomInputItem *> *customInputItems;
+@property (nonatomic, strong) UIColor *customMessageHyperLinkColor;
 
 /**
- *  消息下拉刷新loading图片设置，区分不同state状态
+ *  访客文本消息字体大小
  */
-- (void)setMessagesLoadImages:(NSArray *)images duration:(NSTimeInterval)duration forState:(QYMessagesLoadState)state;
-
-
-//因访客端体验升级，以下属性在v5.1.0版本废弃
-/**
- *  导航栏右侧按钮文案颜色,默认是灰色,优先级高于rightItemStyleGrayOrWhite
- */
-//@property (nonatomic, strong) UIColor *rightItemTextColor;
+@property (nonatomic, assign) CGFloat customMessageTextFontSize;
 
 /**
- *  人工按钮文案
+ *  客服文本消息字体颜色
  */
-//@property (nonatomic, copy) NSString *humanButtonText;
+@property (nonatomic, strong) UIColor *serviceMessageTextColor;
 
 /**
- *  聊天窗口右上角按钮（对于平台电商来说，这里可以考虑放“商铺入口”）文本
+ *  客服文本消息中的链接字体颜色
  */
-//@property (nonatomic, copy) NSString *shopEntranceText;
+@property (nonatomic, strong) UIColor *serviceMessageHyperLinkColor;
 
 /**
- *  聊天窗口右上角按钮（对于平台电商来说，这里可以考虑放“商铺入口”）icon
+ *  客服文本消息字体大小
  */
-//@property (nonatomic, strong) UIImage *shopEntranceImage;
+@property (nonatomic, assign) CGFloat serviceMessageTextFontSize;
+
+/**
+ *  提示文本消息字体颜色；提示文本消息有很多种，比如“***为你服务”就是一种
+ */
+@property (nonatomic, strong) UIColor *tipMessageTextColor;
+
+/**
+ *  提示文本消息字体大小；提示文本消息有很多种，比如“***为你服务”就是一种
+ */
+@property (nonatomic, assign) CGFloat tipMessageTextFontSize;
+
+/**
+ *  输入框文本消息字体颜色
+ */
+@property (nonatomic, strong) UIColor *inputTextColor;
+
+/**
+ *  输入框文本消息字体大小
+ */
+@property (nonatomic, assign) CGFloat inputTextFontSize;
+
+/**
+ *  消息tableview的背景图片
+ */
+@property (nonatomic, strong) UIImageView *sessionBackground;
+
+/**
+ *  访客头像
+ */
+@property (nonatomic, strong) UIImage *customerHeadImage;
+@property (nonatomic, copy) NSString *customerHeadImageUrl;
+
+/**
+ *  客服头像
+ */
+@property (nonatomic, strong) UIImage *serviceHeadImage;
+@property (nonatomic, copy) NSString *serviceHeadImageUrl;
+
+/**
+ *  访客消息气泡normal图片
+ */
+@property (nonatomic, strong) UIImage *customerMessageBubbleNormalImage;
+
+/**
+ *  访客消息气泡pressed图片
+ */
+@property (nonatomic, strong) UIImage *customerMessageBubblePressedImage;
+
+/**
+ *  客服消息气泡normal图片
+ */
+@property (nonatomic, strong) UIImage *serviceMessageBubbleNormalImage;
+
+/**
+ *  客服消息气泡pressed图片
+ */
+@property (nonatomic, strong) UIImage *serviceMessageBubblePressedImage;
+
+/**
+ *  输入框上方操作按钮文字颜色
+ */
+@property (nonatomic, strong) UIColor *actionButtonTextColor;
+
+/**
+ *  输入框上方操作按钮边框颜色
+ */
+@property (nonatomic, strong) UIColor *actionButtonBorderColor;
+
+/**
+ *  消息竖直方向间距
+ */
+@property (nonatomic, assign) CGFloat sessionMessageSpacing;
+
+/**
+ *  是否显示头像
+ */
+@property (nonatomic, assign) BOOL showHeadImage;
+
+/**
+ *  默认是YES,默认rightBarButtonItem内容是黑色，设置为NO，可以修改为白色
+ */
+@property (nonatomic, assign) BOOL rightBarButtonItemColorBlackOrWhite;
+
+/**
+ *  默认是YES,默认显示发送语音入口，设置为NO，可以修改为隐藏
+ */
+@property (nonatomic, assign) BOOL showAudioEntry;
+
+/**
+ *  默认是YES,默认在机器人模式下显示发送语音入口，设置为NO，可以修改为隐藏
+ */
+@property (nonatomic, assign) BOOL showAudioEntryInRobotMode;
+
+/**
+ *  默认是YES,默认显示发送表情入口，设置为NO，可以修改为隐藏
+ */
+@property (nonatomic, assign) BOOL showEmoticonEntry;
+
+/**
+ *  默认是YES,默认显示发送图片入口，设置为NO，可以修改为隐藏
+ */
+@property (nonatomic, assign) BOOL showImageEntry;
+
+/**
+ *  默认是YES,默认进入聊天界面，是文本输入模式的话，会弹出键盘，设置为NO，可以修改为不弹出
+ */
+@property (nonatomic, assign) BOOL autoShowKeyboard;
+
+/**
+ *  表示聊天组件离界面底部的间距，默认是0；比较典型的是底部有tabbar，这时候设置为tabbar的高度即可
+ */
+@property (nonatomic, assign) CGFloat bottomMargin;
+
+/**
+ *  是否显示关闭会话入口
+ */
+@property (nonatomic, assign) BOOL showCloseSessionEntry;
+
+@property (nonatomic, assign) BOOL showTransWords;
 
 @end
 

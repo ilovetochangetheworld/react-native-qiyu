@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
+
 /**
  *  会话窗口来源
  */
@@ -16,16 +17,16 @@
 /**
  *  来源标题
  */
-@property (nonatomic, copy) NSString *title;
+@property (nonatomic,copy)      NSString    *title;
 
 /**
  *  来源url
  */
-@property (nonatomic, copy) NSString *urlString;
+@property (nonatomic,copy)      NSString    *urlString;
 
 /**
  *  来源自定义信息
  */
-@property (nonatomic, copy) NSString *customInfo;
+@property (nonatomic,copy)      NSString    *customInfo;
 
 @end
