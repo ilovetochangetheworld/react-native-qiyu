@@ -1,6 +1,6 @@
 {
   "name": "bobol-qiyu",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "react-native netease qiyu sdk",
   "main": "index.js",
   "keywords": [
